@@ -7,8 +7,13 @@
 *.o
 *.obj
 /bin/
+/bin
+bin/
 /BIN
 /obj/
+/obj
+obj/
+
 
 # Precompiled Headers
 *.gch
