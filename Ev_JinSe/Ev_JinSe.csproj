@@ -20,6 +20,9 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,7 +42,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -50,6 +59,12 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization.Extensions">
+      <HintPath>..\packages\System.Web.Optimization.Extensions.1.0.3\lib\net40\System.Web.Optimization.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -69,9 +84,6 @@
     <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http">
       <Private>True</Private>
@@ -94,9 +106,6 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Optimization">
-      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Providers">
       <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.2\lib\net40\System.Web.Providers.dll</HintPath>
     </Reference>
@@ -117,12 +126,7 @@
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
-      <Private>True</Private>
-      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
-    </Reference>
-    <Reference Include="Antlr3.Runtime">
-      <Private>True</Private>
-      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +135,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SchoolController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -193,7 +198,266 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\school\326791.png" />
+    <Content Include="Image\school\337830.png" />
+    <Content Include="Image\school\gc.png" />
+    <Content Include="Image\school\Group5.png" />
+    <Content Include="Image\school\lsg.png" />
+    <Content Include="Image\school\xue2.png" />
+    <Content Include="Image\src\229584" />
+    <Content Include="Image\src\240941" />
+    <Content Include="Image\src\240971" />
+    <Content Include="Image\src\282110" />
+    <Content Include="Image\src\284483" />
+    <Content Include="Image\src\287773" />
+    <Content Include="Image\src\289322" />
+    <Content Include="Image\src\289738" />
+    <Content Include="Image\src\299574" />
+    <Content Include="Image\src\307501" />
+    <Content Include="Image\src\309581" />
+    <Content Include="Image\src\310801" />
+    <Content Include="Image\src\310866" />
+    <Content Include="Image\src\313091" />
+    <Content Include="Image\src\318310" />
+    <Content Include="Image\src\320922" />
+    <Content Include="Image\src\320923" />
+    <Content Include="Image\src\320924" />
+    <Content Include="Image\src\320925" />
+    <Content Include="Image\src\320926" />
+    <Content Include="Image\src\321579" />
+    <Content Include="Image\src\322285" />
+    <Content Include="Image\src\323199" />
+    <Content Include="Image\src\323265" />
+    <Content Include="Image\src\323273" />
+    <Content Include="Image\src\326479" />
+    <Content Include="Image\src\328972" />
+    <Content Include="Image\src\331710" />
+    <Content Include="Image\src\333807" />
+    <Content Include="Image\src\334691" />
+    <Content Include="Image\src\334728" />
+    <Content Include="Image\src\334965" />
+    <Content Include="Image\src\334967" />
+    <Content Include="Image\src\335153" />
+    <Content Include="Image\src\347265" />
+    <Content Include="Image\src\353000" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Image\src\11.0.1.js" />
+    <Content Include="Image\src\163.png" />
+    <Content Include="Image\src\172071_image20.png" />
+    <Content Include="Image\src\172608_image20.png" />
+    <Content Include="Image\src\183861_image20.png" />
+    <Content Include="Image\src\186443_image20.png" />
+    <Content Include="Image\src\220199_image1.png" />
+    <Content Include="Image\src\237589_image1.png" />
+    <Content Include="Image\src\240941.png" />
+    <Content Include="Image\src\240971.png" />
+    <Content Include="Image\src\258583_image1.png" />
+    <Content Include="Image\src\259052_image1.png" />
+    <Content Include="Image\src\261058_image1.png" />
+    <Content Include="Image\src\263926_image1.png" />
+    <Content Include="Image\src\264598_image1.png" />
+    <Content Include="Image\src\265324_image1.png" />
+    <Content Include="Image\src\265749_image1.png" />
+    <Content Include="Image\src\266031_image1.png" />
+    <Content Include="Image\src\270526_image1.png" />
+    <Content Include="Image\src\272630_image1.png" />
+    <Content Include="Image\src\273876_image1.png" />
+    <Content Include="Image\src\276831_image1.png" />
+    <Content Include="Image\src\277690_image1.png" />
+    <Content Include="Image\src\279265_image1.png" />
+    <Content Include="Image\src\279728_image1.png" />
+    <Content Include="Image\src\281192_image1.png" />
+    <Content Include="Image\src\282110.png" />
+    <Content Include="Image\src\282689_image1.png" />
+    <Content Include="Image\src\283288_image1.png" />
+    <Content Include="Image\src\283822_image1.png" />
+    <Content Include="Image\src\284483.png" />
+    <Content Include="Image\src\285846_image1.png" />
+    <Content Include="Image\src\287773.png" />
+    <Content Include="Image\src\289322.png" />
+    <Content Include="Image\src\290530_image20.png" />
+    <Content Include="Image\src\290749_image1.png" />
+    <Content Include="Image\src\294394_image7.png" />
+    <Content Include="Image\src\296330_image1.png" />
+    <Content Include="Image\src\296490_image1.png" />
+    <Content Include="Image\src\297039_image1.png" />
+    <Content Include="Image\src\299574.png" />
+    <Content Include="Image\src\305762_image1.png" />
+    <Content Include="Image\src\307501.png" />
+    <Content Include="Image\src\308273_image1.png" />
+    <Content Include="Image\src\310801.png" />
+    <Content Include="Image\src\310866.png" />
+    <Content Include="Image\src\313091.png" />
+    <Content Include="Image\src\318310.png" />
+    <Content Include="Image\src\318817_image1.png" />
+    <Content Include="Image\src\318817_image7.png" />
+    <Content Include="Image\src\319930_image1.png" />
+    <Content Include="Image\src\320023_image1.png" />
+    <Content Include="Image\src\320150_image1.png" />
+    <Content Include="Image\src\320467_image1.png" />
+    <Content Include="Image\src\320501_image1.png" />
+    <Content Include="Image\src\320670_image1.png" />
+    <Content Include="Image\src\321757_image1.png" />
+    <Content Include="Image\src\322285.png" />
+    <Content Include="Image\src\322961_image1.png" />
+    <Content Include="Image\src\323199.png" />
+    <Content Include="Image\src\323265.png" />
+    <Content Include="Image\src\323273.png" />
+    <Content Include="Image\src\323366_image1.png" />
+    <Content Include="Image\src\325581_image1.png" />
+    <Content Include="Image\src\325890_image1.png" />
+    <Content Include="Image\src\326479.png" />
+    <Content Include="Image\src\326621_image1.png" />
+    <Content Include="Image\src\327389_image1.png" />
+    <Content Include="Image\src\328321_image1.png" />
+    <Content Include="Image\src\328803_image1.png" />
+    <Content Include="Image\src\328972.png" />
+    <Content Include="Image\src\329375_image1.png" />
+    <Content Include="Image\src\329593_image7.png" />
+    <Content Include="Image\src\331710.png" />
+    <Content Include="Image\src\333807.png" />
+    <Content Include="Image\src\334012_image1.png" />
+    <Content Include="Image\src\334326_image1.png" />
+    <Content Include="Image\src\334691.png" />
+    <Content Include="Image\src\334728.png" />
+    <Content Include="Image\src\334965.png" />
+    <Content Include="Image\src\334967.png" />
+    <Content Include="Image\src\335153.png" />
+    <Content Include="Image\src\335380_image7.png" />
+    <Content Include="Image\src\335391_image7.png" />
+    <Content Include="Image\src\336428_image1.png" />
+    <Content Include="Image\src\337109_image7.png" />
+    <Content Include="Image\src\337293_image1.png" />
+    <Content Include="Image\src\340996_image1.png" />
+    <Content Include="Image\src\341277_image1.png" />
+    <Content Include="Image\src\341316_image7.png" />
+    <Content Include="Image\src\341356_image1.png" />
+    <Content Include="Image\src\341715_image1.png" />
+    <Content Include="Image\src\343717_image1.png" />
+    <Content Include="Image\src\344074_image1.png" />
+    <Content Include="Image\src\344096_image1.png" />
+    <Content Include="Image\src\344252_image1.png" />
+    <Content Include="Image\src\344330_image1.png" />
+    <Content Include="Image\src\344454_image1.png" />
+    <Content Include="Image\src\344454_image7.png" />
+    <Content Include="Image\src\346472_image1.png" />
+    <Content Include="Image\src\346927_image1.png" />
+    <Content Include="Image\src\346981_image1.png" />
+    <Content Include="Image\src\347148_image1.png" />
+    <Content Include="Image\src\347209_image1.png" />
+    <Content Include="Image\src\347265.png" />
+    <Content Include="Image\src\349186_image1.png" />
+    <Content Include="Image\src\349198_image1.png" />
+    <Content Include="Image\src\349382_image1.png" />
+    <Content Include="Image\src\349453_image1.png" />
+    <Content Include="Image\src\349526_image1.png" />
+    <Content Include="Image\src\349535_image1.png" />
+    <Content Include="Image\src\349583_image1.png" />
+    <Content Include="Image\src\349598_image1.png" />
+    <Content Include="Image\src\349663_image1.png" />
+    <Content Include="Image\src\349684_image1.png" />
+    <Content Include="Image\src\349717_image1.png" />
+    <Content Include="Image\src\350588_image1.png" />
+    <Content Include="Image\src\350699_image1.png" />
+    <Content Include="Image\src\351000_image1.png" />
+    <Content Include="Image\src\351228_image1.png" />
+    <Content Include="Image\src\351561_image1.png" />
+    <Content Include="Image\src\351639_image1.png" />
+    <Content Include="Image\src\351649_image1.png" />
+    <Content Include="Image\src\351699_image1.png" />
+    <Content Include="Image\src\351765_image1.png" />
+    <Content Include="Image\src\351839_image1.png" />
+    <Content Include="Image\src\351879_image1.png" />
+    <Content Include="Image\src\351893_image1.png" />
+    <Content Include="Image\src\351895_image1.png" />
+    <Content Include="Image\src\352006_image1.png" />
+    <Content Include="Image\src\352051_image1.png" />
+    <Content Include="Image\src\352087_image1.png" />
+    <Content Include="Image\src\352107_image1.png" />
+    <Content Include="Image\src\352114_image1.png" />
+    <Content Include="Image\src\352252_image1.png" />
+    <Content Include="Image\src\352359_image1.png" />
+    <Content Include="Image\src\352364_image1.png" />
+    <Content Include="Image\src\352377_image1.png" />
+    <Content Include="Image\src\352399_image1.png" />
+    <Content Include="Image\src\352484_image1.png" />
+    <Content Include="Image\src\352564_image1.png" />
+    <Content Include="Image\src\352693_image1.png" />
+    <Content Include="Image\src\352784_image1.png" />
+    <Content Include="Image\src\352794_image1.png" />
+    <Content Include="Image\src\352798_image1.png" />
+    <Content Include="Image\src\352825_image1.png" />
+    <Content Include="Image\src\352887_image1.png" />
+    <Content Include="Image\src\353000.png" />
+    <Content Include="Image\src\36kr.png" />
+    <Content Include="Image\src\63404_image20.png" />
+    <Content Include="Image\src\ab77b6ea7f3fbf79.js" />
+    <Content Include="Image\src\ACX.png" />
+    <Content Include="Image\src\Allcoin.png" />
+    <Content Include="Image\src\almond.js" />
+    <Content Include="Image\src\analytics.js" />
+    <Content Include="Image\src\appewm-qq.png" />
+    <Content Include="Image\src\baidu.png" />
+    <Content Include="Image\src\bi.png" />
+    <Content Include="Image\src\Binance.png" />
+    <Content Include="Image\src\Bitfinex.png" />
+    <Content Include="Image\src\bitflyer.png" />
+    <Content Include="Image\src\bithumb.png" />
+    <Content Include="Image\src\Bitstamp.png" />
+    <Content Include="Image\src\bitstar.png" />
+    <Content Include="Image\src\Bittrex.png" />
+    <Content Include="Image\src\c.js" />
+    <Content Include="Image\src\china.png" />
+    <Content Include="Image\src\Coinbase.png" />
+    <Content Include="Image\src\CoinEgg.png" />
+    <Content Include="Image\src\Coinone.png" />
+    <Content Include="Image\src\Cryptopia.png" />
+    <Content Include="Image\src\donews.png" />
+    <Content Include="Image\src\els.png" />
+    <Content Include="Image\src\english.png" />
+    <Content Include="Image\src\fengwo.png" />
+    <Content Include="Image\src\Gateio.png" />
+    <Content Include="Image\src\grade3.png" />
+    <Content Include="Image\src\grade4.png" />
+    <Content Include="Image\src\grade5.png" />
+    <Content Include="Image\src\headr.css" />
+    <Content Include="Image\src\hexun.png" />
+    <Content Include="Image\src\HitBTC.png" />
+    <Content Include="Image\src\hm.js" />
+    <Content Include="Image\src\huobipro.png" />
+    <Content Include="Image\src\index.css" />
+    <Content Include="Image\src\Japan.png" />
+    <Content Include="Image\src\korbit.png" />
+    <Content Include="Image\src\Korea.png" />
+    <Content Include="Image\src\kraken.png" />
+    <Content Include="Image\src\kushen.png" />
+    <Content Include="Image\src\layer.css" />
+    <Content Include="Image\src\left.png" />
+    <Content Include="Image\src\lianshang.png" />
+    <Content Include="Image\src\lieyun.png" />
+    <Content Include="Image\src\liqui.png" />
+    <Content Include="Image\src\lodash.js" />
+    <Content Include="Image\src\master.css" />
+    <Content Include="Image\src\Neraex.png" />
+    <Content Include="Image\src\OKEX.png" />
+    <Content Include="Image\src\phone.png" />
+    <Content Include="Image\src\Poloniex.png" />
+    <Content Include="Image\src\push.js" />
+    <Content Include="Image\src\returnb.png" />
+    <Content Include="Image\src\right.png" />
+    <Content Include="Image\src\sina.png" />
+    <Content Include="Image\src\so.png" />
+    <Content Include="Image\src\sougou.png" />
+    <Content Include="Image\src\tengxun.png" />
+    <Content Include="Image\src\Tidex.png" />
+    <Content Include="Image\src\toast.js" />
+    <Content Include="Image\src\toastr.min.css" />
+    <Content Include="Image\src\toastr.min.js" />
+    <Content Include="Image\src\tougao.png" />
+    <Content Include="Image\src\toutiao.png" />
+    <Content Include="Image\src\yobit.png" />
+    <Content Include="Image\src\you.png" />
+    <Content Include="Image\src\ZB.png" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -221,6 +485,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\School\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -257,6 +522,13 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。启用“NuGet 程序包还原”可下载这些程序包。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
