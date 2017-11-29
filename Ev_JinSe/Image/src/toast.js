@@ -1,0 +1,1 @@
+var Toast={success:function(t){toastr.success(t,"成功信息",{timeOut:2e3})},error:function(t){toastr.error(t,"错误信息",{timeOut:2e3})}};
