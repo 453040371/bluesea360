@@ -13,6 +13,8 @@ namespace Ev_JinSe.Controllers
 
         public ActionResult Index()
         {
+           string sss =  toolsWebRequest.loadNewsStr("http://www.jinse.com");
+           ViewBag.xxxhtml = sss;
             return View();
         }
 
