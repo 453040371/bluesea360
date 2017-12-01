@@ -11,8 +11,15 @@ namespace Ev_JinSe.Controllers
         //
         // GET: /Article/
 
-        public ActionResult Index()
+        public ActionResult Index(string hs)
         {
+            string strHtml = string.Empty;
+            if (hs != null && hs.Trim().Length > 0)
+            {
+                string str = HttpUtility.HtmlDecode(hs);
+               strHtml = toolsWebRequest.loadNewsDetailStr(str);
+            }
+            ViewBag.ssss = strHtml;
             return View();
         }
 
