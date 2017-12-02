@@ -15,6 +15,9 @@ namespace Ev_JinSe.Controllers
         {
            string sss =  toolsWebRequest.loadNewsStr("http://www.jinse.com");
            ViewBag.xxxhtml = sss;
+            string chatStr = string.Empty;
+           string strHomeChat = toolsWebRequest.loadHomeChat();
+           ViewBag.strHomeChat = strHomeChat;
             return View();
         }
 

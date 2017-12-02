@@ -15,6 +15,86 @@ namespace Ev_JinSe
         static string urlWWW = "http://www.jinse.com";
 
 
+
+        #region 网址导航
+
+
+        /// <summary>
+        /// 网址导航的title
+        /// </summary>
+        /// <returns></returns>
+        public static string naviListTitle()
+        {
+            string htmlUrl = "http://www.jinse.com/nav";
+            HtmlDocument xmldd = new HtmlWeb().Load(htmlUrl);
+            var coinsTitle = xmldd.DocumentNode.SelectSingleNode("//div[@class=\"tab-nav\"]");
+            return coinsTitle.OuterHtml;
+
+        }
+        /// <summary>s
+        /// 网址导航的详情列表
+        /// </summary>
+        /// <returns></returns>
+        public static string naviListDetails()
+        {
+            string htmlUrl = "http://www.jinse.com/nav";
+            HtmlDocument xmldd = new HtmlWeb().Load(htmlUrl);
+            var coinsTitle = xmldd.DocumentNode.SelectSingleNode("//div[@class=\"tabnav-content\"]");
+            return coinsTitle.OuterHtml;
+        }
+
+        /// <summary>s
+        /// 网址导航的详情列表2
+        /// </summary>
+        /// <returns></returns>
+        public static string naviListDetails2()
+        {
+            string htmlUrl = "http://www.jinse.com/nav";
+            HtmlDocument xmldd = new HtmlWeb().Load(htmlUrl);
+            var coinsTitle = xmldd.DocumentNode.SelectSingleNode("//div[@class=\"tabnav-contents\"]");
+            return coinsTitle.OuterHtml;
+        }
+
+        #endregion
+
+        #region 币值  行情
+
+        public static string coinsMarket() {
+            HtmlDocument xmldd = new HtmlWeb().Load("http://www.jinse.com/market");
+            var htmlDDs = xmldd.DocumentNode.SelectSingleNode("//div[@class=\"wrap marginb clearfix\"]");
+            return "";
+        }
+
+
+        /// <summary>
+        /// 币值的title
+        /// </summary>
+        /// <returns></returns>
+        public static string coinsListTitle()
+        {
+            string htmlUrl = "http://www.jinse.com/currencies";
+            HtmlDocument xmldd = new HtmlWeb().Load(htmlUrl);
+            var coinsTitle = xmldd.DocumentNode.SelectSingleNode("//div[@class=\"rankings\"]");
+            return coinsTitle.OuterHtml;
+
+        }
+        /// <summary>
+        /// 币值的详情列表
+        /// </summary>
+        /// <returns></returns>
+        public static string coinsListDetails()
+        {
+            string htmlUrl = "http://www.jinse.com/currencies";
+            HtmlDocument xmldd = new HtmlWeb().Load(htmlUrl);
+            var coinsTitle = xmldd.DocumentNode.SelectSingleNode("//div[@class=\"ranking-content\"]");
+            return coinsTitle.OuterHtml;
+        }
+
+        #endregion
+
+        #region 文章详情
+        
+
         //新闻文章详情
         public static string loadNewsDetailStr(string htmlUrl) {
             string urlStr = urlWWW + htmlUrl;
@@ -48,6 +128,10 @@ namespace Ev_JinSe
             return htmlDDs.OuterHtml;
         }
 
+        #endregion
+
+        #region 首页
+        
 
         /// <summary>
         /// 首页新闻列表
@@ -106,6 +190,22 @@ namespace Ev_JinSe
             return htmlDDs.InnerHtml;
         }
 
+        /// <summary>
+        /// 首页右侧的折线图
+        /// </summary>
+        /// <returns></returns>
+        public static string loadHomeChat() {
+            if (xmlDoc == null)
+            {
+                xmlDoc = new HtmlWeb().Load(urlWWW);
+            }
+            var coinsTitle = xmlDoc.DocumentNode.SelectSingleNode("//div[@id=\"market_chart\"]");
+            
+            return coinsTitle.OuterHtml;
+        }
+
+
+        #endregion
 
 
     }

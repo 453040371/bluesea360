@@ -13,6 +13,10 @@ namespace Ev_JinSe.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.naviTitle = toolsWebRequest.naviListTitle();
+            ViewBag.naviDetail = toolsWebRequest.naviListDetails();
+            ViewBag.naviDetail2 = toolsWebRequest.naviListDetails2();
+
             return View();
         }
 

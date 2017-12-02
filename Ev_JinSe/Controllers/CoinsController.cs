@@ -13,93 +13,21 @@ namespace Ev_JinSe.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.coinsTitle = toolsWebRequest.coinsListTitle();
+            ViewBag.coinsDetail = toolsWebRequest.coinsListDetails();
+
             return View();
         }
 
-        //
-        // GET: /Coins/Details/5
-
-        public ActionResult Details(int id)
-        {
+        /// <summary>
+        /// 行情列表
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult coinsMarket() {
+            string strHtml = toolsWebRequest.loadNewsDetailStr("/market");
+            ViewBag.strHtml = strHtml;
             return View();
         }
 
-        //
-        // GET: /Coins/Create
-
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        //
-        // POST: /Coins/Create
-
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Coins/Edit/5
-
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Coins/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Coins/Delete/5
-
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Coins/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }
