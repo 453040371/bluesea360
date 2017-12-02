@@ -100,6 +100,14 @@ namespace Ev_JinSe
             string urlStr = urlWWW + htmlUrl;
             HtmlDocument xmldd = new HtmlWeb().Load(urlStr);
             var htmlDDs = xmldd.DocumentNode.SelectSingleNode("//div[@class=\"wrap marginb clearfix\"]");
+            if (htmlDDs == null)
+            {
+                htmlDDs = xmldd.DocumentNode.SelectSingleNode("//div[@class=\"wrap margin-b clearfix\"]");
+                if (htmlDDs == null)
+                {
+                    return "";
+                }
+            }
             var htmlAlist = htmlDDs.SelectNodes("//a");
             for (int i = 0; i < htmlAlist.Count(); i++)
             {

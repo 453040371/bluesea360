@@ -139,11 +139,13 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Common\toolsWebRequest.cs" />
     <Compile Include="Common\XHtmlElement.cs" />
+    <Compile Include="Controllers\ABCController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\CoinsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NaviController.cs" />
     <Compile Include="Controllers\SchoolController.cs" />
+    <Compile Include="Controllers\ZhiYingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -520,6 +522,8 @@
     <Content Include="Views\Shared\_LayoutPageArticle.cshtml" />
     <Content Include="Views\Article\Index.cshtml" />
     <Content Include="Views\Coins\coinsMarket.cshtml" />
+    <Content Include="Views\ZhiYing\Index.cshtml" />
+    <Content Include="Views\ABC\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
