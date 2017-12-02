@@ -1,5 +1,4 @@
 ﻿<!DOCTYPE html>
-<!-- saved from url=(0021)http://www.jinse.com/ -->
 <html lang="en">
 
 <head>
@@ -93,6 +92,11 @@
                     <img src="~/Image/logo.png" width="200" height="37" alt="" />
                 </a>
             </div>
+            <style>
+                .tab {
+                    font-weight:200;
+                }
+            </style>
             <div class=" mainbav  left font16">
                 <ul>
                     <li class="tab ">
@@ -132,54 +136,7 @@
                 </ul>
             </div>
             <div class="login right logine" style="display: none;">
-                <div class="right phot posit">
-                    <a href="javascript:void(0);"><img class="left login-avatar-link" alt="素数科技" src="http://www.jinse.com/"></a>
-                    <span class="point center font12 login-notification" style="display: none;"></span>
-                    <div class="ponav line36" style="display: none;">
-                        <li class="paddingl8 login-nickname">--</li>
-                        <li>
-                            <a href="http://www.jinse.com/user/" class="login-base-url">基本资料</a>
-                        </li>
-                        <li>
-                            <a href="http://www.jinse.com/user/contributes" title="我的文章">我的文章</a>
-                        </li>
-                        <li class="posit">
-                            <a href="http://www.jinse.com/user/notifications">我的消息</a>
-                            <span class="msg center font10 login-notification-unread" style="display:none;"></span>
-                        </li>
-                        <li>
-                            <a href="http://www.jinse.com/logout">退出登录</a>
-                        </li>
-                        <ol class="sanj"></ol>
-                    </div>
-                </div>
-                <span class="right section">
-                    <a href="javascript:void(0);" target="_self" title="投稿" class="tougao contribute">
-                        <img src="../Image/src/tougao.png">
-                    </a>
-                </span>
-                <span class="right section ">
-                    <a href="javascript:void(0);" target="_blank" title="搜索" class="sousuo search-btn">
-                        <img src="../Image/src/so.png">
-                    </a>
-                </span>
             </div>
-            @*<div class="login right nologin-div">
-                    <span class="loginbar gray5 right nologin-div">
-                        <a href="http://www.jinse.com/login" title="登录">登录</a>
-                        <a href="http://www.jinse.com/login" title="注册">注册</a>
-                    </span>
-                    <span class="right section">
-                        <a href="javascript:void(0);" target="_self" title="投稿" class="tougao contribute">
-                            <img src="../Image/src/tougao.png">
-                        </a>
-                    </span>
-                    <span class="right section ">
-                        <a href="javascript:void(0);" target="_blank" title="搜索" class="sousuo search-btn">
-                            <img src="../Image/src/so.png">
-                        </a>
-                    </span>
-                </div>*@
             <div class="search left" style="display: none;">
                 <span class="left">
                     <svg width="14px" height="16px" viewBox="0 0 14 16">
@@ -202,8 +159,8 @@
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
     <div class="gotop center">
-        <a href="http://www.jinse.com/feed_back/index" class="index-opinion"><img src="../Image/src/bi.png" alt=""><div>意见反馈</div></a>
-        <a href="http://www.jinse.com/#top" class="index-fanhui yinchang">
+        <a href="/Article/Index?hs=%2ffeed_back%2findex" class="index-opinion"><img src="../Image/src/bi.png" alt=""><div>意见反馈</div></a>
+        <a href="/#top" class="index-fanhui yinchang">
             <svg width="19px" height="11px" viewBox="0 0 19 11">
                 <g transform="translate(-1866.000000, -3246.000000)" fill="#FFFFFF">
                     <polygon id="Combined-Shape" fill="#FFFFFF" points="1875.89949 3246.70711 1884.38478 3255.19239 1882.97056 3256.6066 1875.19239 3248.82843 1867.41421 3256.6066 1866 3255.19239 1875.19239 3246"></polygon>
@@ -253,10 +210,10 @@
             </ul>
             <ul class="right job">
                 <li>
-                    <span><a href="http://www.jinse.com/about.html" title="关于我们">关于我们</a></span>
-                    <span><a href="http://www.jinse.com/join.html" title="加入我们">加入我们</a></span>
-                    <span><a href="http://www.jinse.com/about.html#contact" title="联系我们">联系我们</a></span>
-                    <span><a href="http://www.jinse.com/copy.html" title="版权声明">版权声明</a></span>
+                    <span><a href="javacript:void(0);" title="关于我们">关于我们</a></span>
+                    <span><a href="javacript:void(0);" title="加入我们">加入我们</a></span>
+                    <span><a href="javacript:void(0);" title="联系我们">联系我们</a></span>
+                    <span><a href="javacript:void(0);" title="版权声明">版权声明</a></span>
                 </li>
             </ul>
         </div>
@@ -265,7 +222,7 @@
         <div class="cmt-mask"></div>
         <div class="cmt-xuzhi">
             <div class="cmt-xuzhi-con font16 line28">
-                <p>您投送的稿件违反了素数科技的投稿协议，现已关闭您的投稿功能，如有异议请发邮件至<a href="mailto:tougao@jinse.com" title="首页">tougao@jinse.com</a>进行申诉。</p>
+                <p>您投送的稿件违反了素数科技的投稿协议，现已关闭您的投稿功能，如有异议请发邮件至<a href="javacript:void(0);" title="首页">tougao@edu.com</a>进行申诉。</p>
             </div>
             <div class="cmt-xuzhi-close">
                 <input class="center font16 left" id="contribute_forbidden_notice_close" type="button" value="关闭" name="files" multiple="">

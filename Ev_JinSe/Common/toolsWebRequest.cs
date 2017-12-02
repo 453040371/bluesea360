@@ -108,6 +108,30 @@ namespace Ev_JinSe
                     return "";
                 }
             }
+
+            //删除右侧文章作者信息
+            var strZuozhe = htmlDDs.SelectSingleNode("//div[@class=\"index-column f\"]");
+            if (strZuozhe !=null)
+            {
+                strZuozhe.InnerHtml = "";
+            }
+
+            //删除文章中间作者信息
+            var strZuozhe2 = htmlDDs.SelectSingleNode("//span[@class=\"left namez\"]");
+            if (strZuozhe2 != null)
+            {
+                strZuozhe2.InnerHtml = "<a class='blue' href='javascript:void(0);'>由网友提供</a>";
+            }
+
+                //删除文章中间作者信息
+            var strZuozhe3 = htmlDDs.SelectSingleNode("//div[@class=\"time gray5 font12 margin-b10\"]");
+            if (strZuozhe3 != null)
+            {
+                strZuozhe3.InnerHtml = "";
+            }
+
+
+            //获取和修改A标签里面的href路径，设置为本地地址
             var htmlAlist = htmlDDs.SelectNodes("//a");
             for (int i = 0; i < htmlAlist.Count(); i++)
             {
@@ -131,9 +155,10 @@ namespace Ev_JinSe
                     htmlAlist[i].SetAttributeValue("href", strReplace);
                 }
             }
+            string str = htmlDDs.OuterHtml.Replace(@"金色财经的作者撰写", "网友转载");
+            str = str.Replace("金色财经", "本站");
 
-
-            return htmlDDs.OuterHtml;
+            return str;
         }
 
         #endregion
@@ -155,8 +180,8 @@ namespace Ev_JinSe
             }
 
             //获取文章DIV模块
-            var htmlDDs = xmlDoc.DocumentNode.SelectSingleNode("//div[@id='topic_list']");
-            var bugSum = htmlDDs.SelectSingleNode("//div[@id='main1']");
+            var htmlDDs = xmlDoc.DocumentNode.SelectSingleNode("//div[@id='main1']");
+            var bugSum = htmlDDs;
             //获取文章列表模块
             //HtmlNode idmain1 = bugSum.SelectSingleNode("//div[@id='main1']");
             var hrefList = bugSum.SelectNodes("//ol[@class='list clearfix']/a");
@@ -195,7 +220,7 @@ namespace Ev_JinSe
                 htmlDDs.SelectSingleNode("//a[@href=\"" + strHrefValue + "\"]").SetAttributeValue("href", strReplace);
                
             }
-            return htmlDDs.InnerHtml;
+            return htmlDDs.OuterHtml;
         }
 
         /// <summary>
