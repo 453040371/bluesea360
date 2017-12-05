@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Web;
 using HtmlAgilityPack;
+using System.Text.RegularExpressions;
 
 namespace Ev_JinSe
 {
@@ -59,7 +60,8 @@ namespace Ev_JinSe
 
         #region 币值  行情
 
-        public static string coinsMarket() {
+        public static string coinsMarket()
+        {
             HtmlDocument xmldd = new HtmlWeb().Load("http://www.jinse.com/market");
             var htmlDDs = xmldd.DocumentNode.SelectSingleNode("//div[@class=\"wrap marginb clearfix\"]");
             return "";
@@ -93,10 +95,11 @@ namespace Ev_JinSe
         #endregion
 
         #region 文章详情
-        
+
 
         //新闻文章详情
-        public static string loadNewsDetailStr(string htmlUrl) {
+        public static string loadNewsDetailStr(string htmlUrl)
+        {
             string urlStr = urlWWW + htmlUrl;
             HtmlDocument xmldd = new HtmlWeb().Load(urlStr);
             var htmlDDs = xmldd.DocumentNode.SelectSingleNode("//div[@class=\"wrap marginb clearfix\"]");
@@ -111,7 +114,7 @@ namespace Ev_JinSe
 
             //删除右侧文章作者信息
             var strZuozhe = htmlDDs.SelectSingleNode("//div[@class=\"index-column f\"]");
-            if (strZuozhe !=null)
+            if (strZuozhe != null)
             {
                 strZuozhe.InnerHtml = "";
             }
@@ -123,19 +126,30 @@ namespace Ev_JinSe
                 strZuozhe2.InnerHtml = "<a class='blue' href='javascript:void(0);'>由网友提供</a>";
             }
 
-                //删除文章中间作者信息
+            //删除文章中间作者信息
             var strZuozhe3 = htmlDDs.SelectSingleNode("//div[@class=\"time gray5 font12 margin-b10\"]");
             if (strZuozhe3 != null)
             {
                 strZuozhe3.InnerHtml = "";
             }
 
+            //删除文章中间作者信息
+            var strImglist = htmlDDs.SelectSingleNode("//div[@class=\"con line33 font16\"]");
+
+            Regex reges = new Regex(@"<img(.*?)>");
+            MatchCollection matchList = reges.Matches(strImglist.InnerHtml);
+            var ss = matchList.Count;
+            for (int i = 0; i < matchList.Count; i++)
+            {
+                var strImg = matchList[i].Groups[0].Value;
+                strImglist.InnerHtml = strImglist.InnerHtml.Replace(strImg, "");
+            }
 
             //获取和修改A标签里面的href路径，设置为本地地址
             var htmlAlist = htmlDDs.SelectNodes("//a");
             for (int i = 0; i < htmlAlist.Count(); i++)
             {
-                 var htmlHref = htmlAlist[i].Attributes["href"];
+                var htmlHref = htmlAlist[i].Attributes["href"];
                 if (htmlHref == null)
                 {
                     continue;
@@ -150,11 +164,13 @@ namespace Ev_JinSe
                     strReplace = "/Article/Index?hs=" + hU;
                     htmlAlist[i].SetAttributeValue("href", strReplace);
                 }
-                else {
+                else
+                {
                     strReplace = "javascript:void(0);";
                     htmlAlist[i].SetAttributeValue("href", strReplace);
                 }
             }
+
             string str = htmlDDs.OuterHtml.Replace(@"金色财经的作者撰写", "网友转载");
             str = str.Replace("金色财经", "本站");
 
@@ -164,7 +180,7 @@ namespace Ev_JinSe
         #endregion
 
         #region 首页
-        
+
 
         /// <summary>
         /// 首页新闻列表
@@ -197,12 +213,12 @@ namespace Ev_JinSe
                 {
                     continue;
                 }
-                if (strHrefValue.Length<20)
+                if (strHrefValue.Length < 20)
                 {
-                    continue;   
+                    continue;
                 }
-                
-               
+
+
                 var strLast = strHrefValue.Substring(strHrefValue.Length - 4, 4);
                 string strReplace = string.Empty;
                 if (strLast.Equals("html"))
@@ -212,13 +228,14 @@ namespace Ev_JinSe
                     strReplace = "/Article/Index?hs=" + htmlUrl;
                     hrefList[j].SetAttributeValue("href", strReplace);
                 }
-                else {
+                else
+                {
                     strReplace = "javascript:void(0);";
                     hrefList[j].SetAttributeValue("href", strReplace);
                 }
                 //htmlDDs.InnerHtml.Replace(strHrefValue, strReplace);
                 htmlDDs.SelectSingleNode("//a[@href=\"" + strHrefValue + "\"]").SetAttributeValue("href", strReplace);
-               
+
             }
             return htmlDDs.OuterHtml;
         }
@@ -227,13 +244,14 @@ namespace Ev_JinSe
         /// 首页右侧的折线图
         /// </summary>
         /// <returns></returns>
-        public static string loadHomeChat() {
+        public static string loadHomeChat()
+        {
             if (xmlDoc == null)
             {
                 xmlDoc = new HtmlWeb().Load(urlWWW);
             }
             var coinsTitle = xmlDoc.DocumentNode.SelectSingleNode("//div[@id=\"market_chart\"]");
-            
+
             return coinsTitle.OuterHtml;
         }
 
