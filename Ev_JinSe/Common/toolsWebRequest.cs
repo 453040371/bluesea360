@@ -135,15 +135,18 @@ namespace Ev_JinSe
 
             //删除文章中间作者信息
             var strImglist = htmlDDs.SelectSingleNode("//div[@class=\"con line33 font16\"]");
-
-            Regex reges = new Regex(@"<img(.*?)>");
-            MatchCollection matchList = reges.Matches(strImglist.InnerHtml);
-            var ss = matchList.Count;
-            for (int i = 0; i < matchList.Count; i++)
+            if (strImglist!=null)
             {
-                var strImg = matchList[i].Groups[0].Value;
-                strImglist.InnerHtml = strImglist.InnerHtml.Replace(strImg, "");
+                Regex reges = new Regex(@"<img(.*?)>");
+                MatchCollection matchList = reges.Matches(strImglist.InnerHtml);
+                var ss = matchList.Count;
+                for (int i = 0; i < matchList.Count; i++)
+                {
+                    var strImg = matchList[i].Groups[0].Value;
+                    strImglist.InnerHtml = strImglist.InnerHtml.Replace(strImg, "");
+                }
             }
+            
 
             //获取和修改A标签里面的href路径，设置为本地地址
             var htmlAlist = htmlDDs.SelectNodes("//a");

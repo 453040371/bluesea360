@@ -508,7 +508,7 @@ header {
 /* xueyuan */
 .xueyuan-new-tongtu {
   height: 300px;
-  background: url(../Src/banner.png?v=2) center no-repeat;
+  background: url(../Src/banner.png) center no-repeat;
   margin-top: -29px;
   background-size: 1920px 300px; }
 
