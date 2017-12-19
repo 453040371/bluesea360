@@ -2292,18 +2292,18 @@ ko.bindingHandlers['disable'] = {
 };
 // For certain common events (currently just 'click'), allow a simplified data-binding syntax
 // e.g. click:handler instead of the usual full-length event:{click:handler}
-function makeEventHandlerShortcut(eventName) {
-    ko.bindingHandlers[eventName] = {
-        'init': function(element, valueAccessor, allBindingsAccessor, viewModel) {
-            var newValueAccessor = function () {
-                var result = {};
-                result[eventName] = valueAccessor();
-                return result;
-            };
-            return ko.bindingHandlers['event']['init'].call(this, element, newValueAccessor, allBindingsAccessor, viewModel);
-        }
-    }
-}
+//function makeEventHandlerShortcut(eventName) {
+//    ko.bindingHandlers[eventName] = {
+//        'init': function(element, valueAccessor, allBindingsAccessor, viewModel) {
+//            var newValueAccessor = function () {
+//                var result = {};
+//                result[eventName] = valueAccessor();
+//                return result;
+//            };
+//            return ko.bindingHandlers['event']['init'].call(this, element, newValueAccessor, allBindingsAccessor, viewModel);
+//        }
+//    }
+//}
 
 ko.bindingHandlers['event'] = {
     'init' : function (element, valueAccessor, allBindingsAccessor, viewModel) {
@@ -2731,7 +2731,7 @@ ko.bindingHandlers['visible'] = {
     }
 };
 // 'click' is just a shorthand for the usual full-length event:{click:handler}
-makeEventHandlerShortcut('click');
+//makeEventHandlerShortcut('click');
 // If you want to make a custom template engine,
 //
 // [1] Inherit from this class (like ko.nativeTemplateEngine does)
