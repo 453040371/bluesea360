@@ -9,6 +9,9 @@
 /obj/
 /obj
 obj/
+/bin/
+/bin
+/bin
 
 
 # Precompiled Headers
@@ -18,7 +21,6 @@ obj/
 # Compiled Dynamic libraries
 *.so
 *.dylib
-*.dll
 
 # Fortran module files
 *.mod
