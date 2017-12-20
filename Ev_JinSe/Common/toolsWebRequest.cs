@@ -29,7 +29,8 @@ namespace Ev_JinSe
             string htmlUrl = "http://www.jinse.com/nav";
             HtmlDocument xmldd = new HtmlWeb().Load(htmlUrl);
             var coinsTitle = xmldd.DocumentNode.SelectSingleNode("//div[@class=\"tab-nav\"]");
-            return coinsTitle.OuterHtml;
+            var str = coinsTitle.OuterHtml.Replace("http://resource.jinse.com/phenix/img/nobg.png", "");
+            return str;
 
         }
         /// <summary>s
@@ -135,7 +136,7 @@ namespace Ev_JinSe
 
             //删除文章中间作者信息
             var strImglist = htmlDDs.SelectSingleNode("//div[@class=\"con line33 font16\"]");
-            if (strImglist!=null)
+            if (strImglist != null)
             {
                 Regex reges = new Regex(@"<img(.*?)>");
                 MatchCollection matchList = reges.Matches(strImglist.InnerHtml);
@@ -146,7 +147,7 @@ namespace Ev_JinSe
                     strImglist.InnerHtml = strImglist.InnerHtml.Replace(strImg, "");
                 }
             }
-            
+
 
             //获取和修改A标签里面的href路径，设置为本地地址
             var htmlAlist = htmlDDs.SelectNodes("//a");
@@ -174,9 +175,15 @@ namespace Ev_JinSe
                 }
             }
 
+             var strBanQuan = htmlDDs.SelectSingleNode("//div[@class=\"reading line30\"]");
+             if (strBanQuan!=null)
+             {
+                 strBanQuan.InnerHtml = @"声明：本文由入驻网友转载，观点仅代表作者本人，绝不代表本站赞同其观点或证实其描述。";
+             }
+
             string str = htmlDDs.OuterHtml.Replace(@"金色财经的作者撰写", "网友转载");
             str = str.Replace("金色财经", "本站");
-
+            str = str.Replace("http://resource.jinse.com/phenix/img/nobg.png", "");
             return str;
         }
 
@@ -240,7 +247,8 @@ namespace Ev_JinSe
                 htmlDDs.SelectSingleNode("//a[@href=\"" + strHrefValue + "\"]").SetAttributeValue("href", strReplace);
 
             }
-            return htmlDDs.OuterHtml;
+            var s = htmlDDs.OuterHtml.Replace("http://resource.jinse.com/phenix/img/nobg.png", "");
+            return s;
         }
 
         /// <summary>
@@ -254,7 +262,7 @@ namespace Ev_JinSe
                 xmlDoc = new HtmlWeb().Load(urlWWW);
             }
             var coinsTitle = xmlDoc.DocumentNode.SelectSingleNode("//div[@id=\"market_chart\"]");
-
+            var s = coinsTitle.OuterHtml.Replace("http://resource.jinse.com/phenix/img/nobg.png", "");
             return coinsTitle.OuterHtml;
         }
 
