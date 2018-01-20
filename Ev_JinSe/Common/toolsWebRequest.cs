@@ -159,7 +159,14 @@ namespace Ev_JinSe
                     continue;
                 }
                 string strHrefValue = htmlHref.Value;
+
+
+                if (strHrefValue.Length < 4)
+                {
+                    continue;
+                }
                 var strLast = strHrefValue.Substring(strHrefValue.Length - 4, 4);
+                
                 string strReplace = string.Empty;
                 if (strLast.Equals("html"))
                 {
@@ -208,9 +215,12 @@ namespace Ev_JinSe
             //获取文章DIV模块
             var htmlDDs = xmlDoc.DocumentNode.SelectSingleNode("//div[@id='main1']");
             var bugSum = htmlDDs;
+            
             //获取文章列表模块
             //HtmlNode idmain1 = bugSum.SelectSingleNode("//div[@id='main1']");
+           
             var hrefList = bugSum.SelectNodes("//ol[@class='list clearfix']/a");
+                
             for (int j = 0; j < hrefList.Count; j++)
             {
                 var htmlHref = hrefList[j].Attributes["href"];
@@ -248,6 +258,7 @@ namespace Ev_JinSe
 
             }
             var s = htmlDDs.OuterHtml.Replace("http://resource.jinse.com/phenix/img/nobg.png", "");
+            s = htmlDDs.InnerHtml.Replace("金色财经", "");
             return s;
         }
 
